@@ -1,0 +1,142 @@
+{%include 'admin/cab.html'%}
+
+<br>
+<div class="container">
+    <div class="row">
+        <div class="col-3">
+            
+            <div class="card">
+                <div class="card-header">
+                    Registra tu turno
+                </div>
+                <div class="card-body">
+                    <form action="/admin/libros/guardar" method="post" enctype="multipart/form-data">
+                        
+                        <div class="mb-3">
+                          <label for="txtNombre" class="form-label">Nombre:</label>
+                          <input type="text"
+                            class="form-control" name="txtNombre" id="txtNombre" aria-describedby="helpId" placeholder="nombre">
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="txtApellido" class="form-label">apellido:</label>
+                            <input type="text"
+                              class="form-control" name="txtApellido" id="txtApellido" aria-describedby="helpId" placeholder="apellido">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="txtEdad" class="form-label">Edad</label>
+                            <input type="char"
+                              class="form-control" name="txtEdad" id="txtEdad" aria-describedby="helpId" placeholder="edad">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="txtDni" class="form-label">DNI:</label>
+                            <input type="int"
+                              class="form-control" name="txtDni" id="txtDni" aria-describedby="helpId" placeholder="dni">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="txtCorreo" class="form-label">Correo</label>
+                            <input type="text"
+                              class="form-control" name="txtCorreo" id="txtCorreo" aria-describedby="helpId" placeholder="correo">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="txtTelefono" class="form-label">Telefono</label>
+                            <input type="int"
+                              class="form-control" name="txtTelefono" id="txtTelefono" aria-describedby="helpId" placeholder="telefono">
+                          </div>
+
+                          
+
+                          <div class="mb-3">
+                            <label for="txtFechaturno" class="form-label">Fechaturno</label>
+                            <input type="date"
+                              class="form-control" name="txtFechaturno" id="txtFechaturno" aria-describedby="helpId" placeholder="fecha" min="2023-01-01" max="2024-12-31">
+                          </div>
+
+                          <div class="mb-3">
+                            <label for="txtHorario" class="form-label">Horario</label>
+                            <input type="time"
+                              class="form-control" name="txtHorario" id="txtHorario" aria-describedby="helpId" placeholder="horario" value=""  min="12:00" max="16:00">
+                          </div>
+
+                          <button type="submit" class="btn btn-primary">Reservar</button>
+
+                    </form>
+                    
+                </div>
+                <div class="card-footer text-muted">
+                    
+                </div>
+            </div>
+
+        </div>
+        <div class="col-md-9">
+
+            <div class="table-responsive">
+                <table class="table table-striped
+                table-hover	
+                table-borderless
+                table-primary
+                align-middle">
+                    <thead class="table-light">
+                        <caption>Table Name</caption>
+                        <tr>
+                            <th>*</th>
+                            <th>Nombre</th>
+                            <th>Apellido</th>
+                            <th>Edad</th>
+                            <th>DNI</th>
+                            <th>Correo</th>
+                            <th>Telefono</th>
+                            <th>Fecha del turno</th>
+                            <th>Horario</th>
+                            <th>Acciones</th>
+                        </tr>
+                        </thead>
+                        <tbody class="table-group-divider">
+                            {% for libro in libros%}
+                            <tr class="table-primary" >
+                                <td scope="row">{{libro[0]}}</td>
+                                <td>{{libro[1]}}</td>
+                                <td>{{libro[2]}}</td>
+                                <td>{{libro[3]}}</td>
+                                <td>{{libro[4]}}</td>
+                                <td>{{libro[5]}}</td>
+                                <td>{{libro[6]}}</td>
+                                <td>{{libro[7]}}</td>
+                                <td>{{libro[8]}}</td>
+                                <td>
+
+                                    <form action="/admin/libros/borrar" method="post">
+
+                                        <input value="{{libro[0]}}" type="hidden" name="txtID" id="txtID">
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
+
+                                </td>
+                            </tr>
+                            {% endfor %}
+                            
+                        </tbody>
+                        <tfoot>
+                            
+                        </tfoot>
+                </table>
+            </div>
+            
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+{%include 'admin/foot.html'%}

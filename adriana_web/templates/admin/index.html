@@ -1,0 +1,21 @@
+{% include 'admin/cab.html' %}
+
+  <div class="row align-items-md-stretch">
+    <div class="col-md-2">  
+    </div>
+
+    <div class="col-md-8">
+        <div
+            class="h-100 p-5 text-white bg-primary border rounded-3">
+            <h2>Bienvenida Sra Adriana, esta seccion es del  <strong>{{session["usuario"]}}</strong></h2>
+            <p>Aqui podras reservar tus turnos e eliminarlos, y para los usuarios solo veran la fecha reservada.</p>
+            <a class="btn btn-outline-danger" href="/admin/libros" role="button">Empezar la gestion</a>
+        </div>
+    </div>
+
+    <div class="col-md-2">
+        
+    </div>
+  </div>
+  
+{% include 'admin/foot.html' %}
